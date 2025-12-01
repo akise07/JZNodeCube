@@ -1,6 +1,7 @@
-import JZNodeCube
+import JZNodeCube, signal
 from pathlib import Path
-from PySide2 import QtWidgets, QtCore
+# from PySide2 import QtWidgets, QtCore
+from Qt import QtCore, QtWidgets
 from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
 from JZNodeCube import *
 
@@ -8,6 +9,7 @@ from JZNodeCube import *
 BASE_PATH = Path(__file__).parent.resolve()
 
 def main():
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
     app = QtWidgets.QApplication([])
     graph = NodeGraph()
     graph.register_node(basic.SimpleNode)
@@ -35,7 +37,7 @@ def main():
     # graph.auto_layout_nodes()
     # graph.show()
     graph_widget.show()
-    app.exec_()
+    app.exec()
 
 if __name__ == '__main__':
     main()

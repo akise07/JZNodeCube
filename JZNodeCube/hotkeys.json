@@ -1,0 +1,22 @@
+[
+    {
+        "type":"menu",
+        "label":"&Edit",
+        "items":[
+            {
+                "type":"command",
+                "label":"Zoom In",
+                "file":"./hotkey_functions.py",
+                "function_name":"zoom_in",
+                "shortcut":"="
+            },
+            {
+                "type":"command",
+                "label":"Zoom Out",
+                "file":"./hotkey_functions.py",
+                "function_name":"zoom_out",
+                "shortcut":"-"
+            }
+        ]
+    }
+]

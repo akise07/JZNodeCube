@@ -105,6 +105,7 @@ def main():
     
     # create group node.
     n_group = graph.create_node('nodes.group.MyGroupNode')
+    graph.expand_group_node(n_group)
 
     # make node connections.
 

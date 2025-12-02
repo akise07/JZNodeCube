@@ -1,11 +1,11 @@
-import JZNodeCube, signal
+import JZNodeCube, signal, sys, os
 from pathlib import Path
-# from PySide2 import QtWidgets, QtCore
 
-from PySide2 import QtCore, QtWidgets
-# from Qt import QtCore, QtWidgets
-from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
+# from PySide2 import QtCore, QtWidgets
 from JZNodeCube import *
+from Qt import QtCore, QtWidgets
+from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
+
 BASE_PATH = Path(__file__).parent.resolve()
 
 def main():

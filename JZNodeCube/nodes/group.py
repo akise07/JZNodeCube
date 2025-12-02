@@ -22,5 +22,6 @@ class JZ8P2615(GroupNode2):
         
         self.add_input('in')
         self.add_output('out')
+        self.add_output('out2')
         self.add_bothway('P1', 'left')
         self.add_bothway('P2', 'right')

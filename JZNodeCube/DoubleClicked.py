@@ -1,5 +1,4 @@
-from PySide2 import QtCore, QtWidgets
-from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
+from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget, SubGraph
 
 class DoubleClicked():
     def __init__(self, graph: NodeGraph):
@@ -11,8 +10,11 @@ class DoubleClicked():
         self.graph.get_node_by_name(node_name)
         if node:
             self.graph.expand_group_node(node)
+            print(self.graph.sub_graphs)
 
     def onDoubleClick(self, node):
         self.create_subgraph(node)
+        # subgraph = SubGraph()
+        # subgraph.show()
     
     

@@ -29,7 +29,6 @@ class BaseNode2(BaseNode):
         if name in self.bothways().keys():
             raise PortRegistrationError(
                 'port name "{}" already registered.'.format(name))
-
         port_args = [name, multi_bothway, display_name, locked]
         if painter_func and callable(painter_func):
             port_args.append(painter_func)
@@ -38,24 +37,25 @@ class BaseNode2(BaseNode):
         elif direction == 'right':
             view = self.view.add_output(*port_args)
             
-        
-
         if color:
             view.color = color
             view.border_color = [min([255, max([0, i + 80])]) for i in color]
 
         port = Port(self, view)
         # port.model.type_ = PortTypeEnum2.BOTH.value
-        if direction == 'left':
-            port.model.type_ = PortTypeEnum2.IN.value
-        elif direction == 'right':
-            port.model.type_ = PortTypeEnum2.OUT.value
         port.model.name = name
         port.model.display_name = display_name
         port.model.multi_connection = multi_bothway
         port.model.locked = locked
-        self._inputs.append(port)
-        self.model.inputs[port.name()] = port.model
+        if direction == 'left':
+            port.model.type_ = PortTypeEnum.IN.value
+            self._inputs.append(port)
+            self.model.inputs[port.name()] = port.model
+        elif direction == 'right':
+            port.model.type_ = PortTypeEnum.OUT.value
+            self._outputs.append(port)
+            self.model.outputs[port.name()] = port.model
+        
         return port
     
 

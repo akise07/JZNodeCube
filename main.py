@@ -6,7 +6,6 @@ from PySide2 import QtCore, QtWidgets
 # from Qt import QtCore, QtWidgets
 from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
 from JZNodeCube import *
-
 BASE_PATH = Path(__file__).parent.resolve()
 
 def main():
@@ -16,10 +15,9 @@ def main():
     graph_widget = graph.widget
     graph_widget.resize(1100, 800)
     graph_widget.setWindowTitle("JZNodeCube")
-
     graph.register_node(basic.SimpleNode)
     graph.register_node(group.JZ8P2615)
-    
+
     simple_node = graph.create_node('basic.SimpleNode')
     JZ8P2615_node = graph.create_node('group.JZ8P2615')
     # graph.expand_group_node(JZ8P2615_node)

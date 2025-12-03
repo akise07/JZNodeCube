@@ -1,17 +1,13 @@
+import threading, time
+from Qt import QtCore, QtWidgets # type: ignore
+
 def show_save_message(graph):
-    """
-    在屏幕下方中心显示黄色"保存成功"消息，2秒后消失
-    """
-    from Qt import QtCore, QtWidgets # type: ignore
-    
     # 获取主窗口 - 使用更可靠的方式
     widget = graph.widget
     main_window = widget
-    
     # 向上查找主窗口
     while main_window.parent():
         main_window = main_window.parent()
-    
     # 创建消息标签
     message_label = QtWidgets.QLabel("保存成功", main_window)
     message_label.setStyleSheet("""
@@ -23,7 +19,6 @@ def show_save_message(graph):
             font-weight: bold;
         }
     """)
-    
     # 设置标签位置和大小
     message_label.adjustSize()
     x = (main_window.width() - message_label.width()) // 2
@@ -37,11 +32,7 @@ def show_save_message(graph):
             message_label.hide()
             message_label.deleteLater()
     
-    # 创建单次定时器
-    timer = QtCore.QTimer()
-    timer.setSingleShot(True)
-    timer.timeout.connect(hide_message)
-    timer.start(2000)  # 2秒后执行
+    threading.Timer(2, hide_message).start()
 
 # File
 def open_session(graph):

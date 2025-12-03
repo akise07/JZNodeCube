@@ -9,7 +9,7 @@
     "reject_connection_types":"{}"
   },
   "nodes":{
-    "0x50b15d0":{
+    "0x140c4e2cb80":{
       "type_":"basic.SimpleNode",
       "icon":null,
       "name":"SimpleNode",
@@ -34,11 +34,11 @@
       "disabled":false,
       "selected":false,
       "visible":true,
-      "width":216.0,
-      "height":76.35,
+      "width":221.28125,
+      "height":77.35,
       "pos":[
-        119.05264910403321,
-        -30.92201694245398
+        118.01336476912377,
+        -111.98619506539717
       ],
       "layout_direction":0,
       "port_deletion_allowed":false,
@@ -47,7 +47,7 @@
         "my_list":"apples"
       }
     },
-    "0x50b1780":{
+    "0x140c4e2cd00":{
       "type_":"ic.JZ8P2615",
       "icon":null,
       "name":"JZ8P2615",
@@ -75,8 +75,8 @@
       "width":160,
       "height":60,
       "pos":[
-        -154.8036742406632,
-        -22.619464739852045
+        -143.3715465566584,
+        2.3233592979766264
       ],
       "layout_direction":0,
       "port_deletion_allowed":false,
@@ -168,11 +168,11 @@
   "connections":[
     {
       "in":[
-        "0x50b15d0",
+        "0x140c4e2cb80",
         "Input"
       ],
       "out":[
-        "0x50b1780",
+        "0x140c4e2cd00",
         "P2"
       ]
     }

@@ -30,10 +30,10 @@ def main():
     # graph_widget.resize(1100, 800)
     # graph_widget.setWindowTitle("JZNodeCube")
     graph.register_node(basic.SimpleNode)
-    graph.register_node(group.JZ8P2615)
+    graph.register_node(ic.JZ8P2615)
 
     simple_node = graph.create_node('basic.SimpleNode')
-    JZ8P2615_node = graph.create_node('group.JZ8P2615')
+    JZ8P2615_node = graph.create_node('ic.JZ8P2615')
     # graph.expand_group_node(JZ8P2615_node)
     
     # properties_bin = PropertiesBinWidget(node_graph=graph, parent=graph_widget)
@@ -46,7 +46,9 @@ def main():
     # wire function to "node_double_clicked" signal.
     # graph.node_double_clicked.connect(display_properties_bin)
     double_clicked = DoubleClicked(graph)
+    node_selected = NodeSelected(graph, properties_widget)
     graph.node_double_clicked.connect(lambda node: double_clicked.onDoubleClick(node))
+    graph.node_selected.connect(lambda node: node_selected.onNodeSelected(node))
     graph.fit_to_selection()
     hotkey_path = Path(BASE_PATH, 'JZNodeCube', 'hotkeys.json')
     graph.set_context_menu_from_file(hotkey_path, 'graph')

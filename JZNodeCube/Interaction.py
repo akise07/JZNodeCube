@@ -1,4 +1,5 @@
 from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget, SubGraph
+from .PropertiesWidget import PropertiesWidget
 
 class DoubleClicked():
     def __init__(self, graph: NodeGraph):
@@ -17,4 +18,11 @@ class DoubleClicked():
         # subgraph = SubGraph()
         # subgraph.show()
     
-    
+class NodeSelected():
+    def __init__(self, graph: NodeGraph, properties_widget: PropertiesWidget):
+        self.graph = graph
+        self.properties_widget = properties_widget
+
+    def onNodeSelected(self, node):
+        self.properties_widget.update(node)
+            

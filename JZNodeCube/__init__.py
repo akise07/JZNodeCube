@@ -1,3 +1,3 @@
 from .nodes import *
-from .DoubleClicked import *
+from .Interaction import *
 from .PropertiesWidget import *

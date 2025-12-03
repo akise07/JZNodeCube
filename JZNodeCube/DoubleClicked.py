@@ -10,7 +10,7 @@ class DoubleClicked():
         self.graph.get_node_by_name(node_name)
         if node:
             self.graph.expand_group_node(node)
-            print(self.graph.sub_graphs)
+            # print(self.graph.sub_graphs)
 
     def onDoubleClick(self, node):
         self.create_subgraph(node)

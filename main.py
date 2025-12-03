@@ -3,7 +3,7 @@ from pathlib import Path
 
 # from PySide2 import QtCore, QtWidgets
 from JZNodeCube import *
-from Qt import QtCore, QtWidgets
+from Qt import QtCore, QtWidgets # type: ignore
 from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget
 
 BASE_PATH = Path(__file__).parent.resolve()
@@ -11,10 +11,24 @@ BASE_PATH = Path(__file__).parent.resolve()
 def main():
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app = QtWidgets.QApplication([])
+    main_window = QtWidgets.QMainWindow()
+    main_window.setWindowTitle("JZNodeCube")
+    main_window.resize(1400, 800)
+
     graph = NodeGraph()
     graph_widget = graph.widget
-    graph_widget.resize(1100, 800)
-    graph_widget.setWindowTitle("JZNodeCube")
+    main_window.setCentralWidget(graph_widget)
+
+    # properties_bin = PropertiesBinWidget(node_graph=graph, parent=main_window)
+    properties_widget = PropertiesWidget(parent=main_window)
+    dock_widget = QtWidgets.QDockWidget("节点属性", main_window)
+    dock_widget.setWidget(properties_widget)
+    dock_widget.setAllowedAreas(QtCore.Qt.RightDockWidgetArea | QtCore.Qt.LeftDockWidgetArea)
+    main_window.addDockWidget(QtCore.Qt.RightDockWidgetArea, dock_widget)
+    dock_widget.resize(300, 800)
+
+    # graph_widget.resize(1100, 800)
+    # graph_widget.setWindowTitle("JZNodeCube")
     graph.register_node(basic.SimpleNode)
     graph.register_node(group.JZ8P2615)
 
@@ -22,13 +36,12 @@ def main():
     JZ8P2615_node = graph.create_node('group.JZ8P2615')
     # graph.expand_group_node(JZ8P2615_node)
     
-    properties_bin = PropertiesBinWidget(node_graph=graph, parent=graph_widget)
-    properties_bin.setWindowFlags(QtCore.Qt.Tool)
+    # properties_bin = PropertiesBinWidget(node_graph=graph, parent=graph_widget)
+    # properties_bin.setWindowFlags(QtCore.Qt.Tool)
 
-    # example show the node properties bin widget when a node is double-clicked.
-    def display_properties_bin(node):
-        if not properties_bin.isVisible():
-            properties_bin.show()
+    # def display_properties_bin(node):
+    #     if not properties_bin.isVisible():
+    #         properties_bin.show()
 
     # wire function to "node_double_clicked" signal.
     # graph.node_double_clicked.connect(display_properties_bin)
@@ -40,7 +53,8 @@ def main():
 
     graph.auto_layout_nodes()
     # graph_widget.show()
-    graph.show()
+    # graph.show()
+    main_window.show()
     if hasattr(app, 'exec_'):
         return app.exec_()
     else:

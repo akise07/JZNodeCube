@@ -16,6 +16,7 @@ def main():
     main_window.resize(1400, 800)
 
     graph = NodeGraph()
+
     graph_widget = graph.widget
     main_window.setCentralWidget(graph_widget)
 
@@ -63,6 +64,7 @@ def main():
     graph.auto_layout_nodes()
     # graph_widget.show()
     # graph.show()
+    graph.load_session('test.json')
     main_window.show()
     if hasattr(app, 'exec_'):
         return app.exec_()

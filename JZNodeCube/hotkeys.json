@@ -1,19 +1,39 @@
 [
     {
         "type":"menu",
+        "label":"&File",
+        "items":[
+            {
+                "type":"command",
+                "label":"Open...",
+                "file":"./HotkeyFunctions.py",
+                "function_name":"open_session",
+                "shortcut":"QtGui.QKeySequence.Open"
+            },
+            {
+                "type":"command",
+                "label":"Save...",
+                "file":"./HotkeyFunctions.py",
+                "function_name":"save_session",
+                "shortcut":"QtGui.QKeySequence.Save"
+            }
+        ]
+    },
+    {
+        "type":"menu",
         "label":"&Edit",
         "items":[
             {
                 "type":"command",
                 "label":"Zoom In",
-                "file":"./hotkey_functions.py",
+                "file":"./HotkeyFunctions.py",
                 "function_name":"zoom_in",
                 "shortcut":"="
             },
             {
                 "type":"command",
                 "label":"Zoom Out",
-                "file":"./hotkey_functions.py",
+                "file":"./HotkeyFunctions.py",
                 "function_name":"zoom_out",
                 "shortcut":"-"
             }

@@ -19,13 +19,18 @@ def main():
     graph_widget = graph.widget
     main_window.setCentralWidget(graph_widget)
 
+    properties_widget = PropertiesWidget()
+    compile_widget = CompileWidget()
+
     # properties_bin = PropertiesBinWidget(node_graph=graph, parent=main_window)
-    properties_widget = PropertiesWidget(parent=main_window)
+    sidebar_manager = CubeSidebar(graph, properties_widget, compile_widget)
     dock_widget = QtWidgets.QDockWidget("节点属性", main_window)
-    dock_widget.setWidget(properties_widget)
+    dock_widget.setWidget(sidebar_manager)
     dock_widget.setAllowedAreas(QtCore.Qt.RightDockWidgetArea | QtCore.Qt.LeftDockWidgetArea)
     main_window.addDockWidget(QtCore.Qt.RightDockWidgetArea, dock_widget)
     dock_widget.resize(300, 800)
+
+    toolbar_manager = CubeToolbar(main_window, graph)
 
     # graph_widget.resize(1100, 800)
     # graph_widget.setWindowTitle("JZNodeCube")
@@ -45,10 +50,12 @@ def main():
 
     # wire function to "node_double_clicked" signal.
     # graph.node_double_clicked.connect(display_properties_bin)
+
     double_clicked = DoubleClicked(graph)
-    node_selected = NodeSelected(graph, properties_widget)
     graph.node_double_clicked.connect(lambda node: double_clicked.onDoubleClick(node))
+    node_selected = NodeSelected(graph, properties_widget)
     graph.node_selected.connect(lambda node: node_selected.onNodeSelected(node))
+    
     graph.fit_to_selection()
     hotkey_path = Path(BASE_PATH, 'JZNodeCube', 'hotkeys.json')
     graph.set_context_menu_from_file(hotkey_path, 'graph')

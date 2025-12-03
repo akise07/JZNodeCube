@@ -1,5 +1,5 @@
 from NodeGraphQt import NodeGraph, BaseNode, PropertiesBinWidget, SubGraph
-from .PropertiesWidget import PropertiesWidget
+from .CubeSidebar import PropertiesWidget
 
 class DoubleClicked():
     def __init__(self, graph: NodeGraph):
@@ -24,5 +24,5 @@ class NodeSelected():
         self.properties_widget = properties_widget
 
     def onNodeSelected(self, node):
-        self.properties_widget.update(node)
+        self.properties_widget.update_data(node)
             

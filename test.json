@@ -9,45 +9,7 @@
     "reject_connection_types":"{}"
   },
   "nodes":{
-    "0x140c4e2cb80":{
-      "type_":"basic.SimpleNode",
-      "icon":null,
-      "name":"SimpleNode",
-      "color":[
-        13,
-        18,
-        23,
-        255
-      ],
-      "border_color":[
-        74,
-        84,
-        85,
-        255
-      ],
-      "text_color":[
-        255,
-        255,
-        255,
-        180
-      ],
-      "disabled":false,
-      "selected":false,
-      "visible":true,
-      "width":221.28125,
-      "height":77.35,
-      "pos":[
-        118.01336476912377,
-        -111.98619506539717
-      ],
-      "layout_direction":0,
-      "port_deletion_allowed":false,
-      "subgraph_session":{},
-      "custom":{
-        "my_list":"apples"
-      }
-    },
-    "0x140c4e2cd00":{
+    "0x2c126f3d5a0":{
       "type_":"ic.JZ8P2615",
       "icon":null,
       "name":"JZ8P2615",
@@ -75,8 +37,8 @@
       "width":160,
       "height":60,
       "pos":[
-        -143.3715465566584,
-        2.3233592979766264
+        -149.60725256611556,
+        22.069761661257658
       ],
       "layout_direction":0,
       "port_deletion_allowed":false,
@@ -163,17 +125,52 @@
           }
         }
       }
+    },
+    "0x2c126f3fc10":{
+      "type_":"basic.\u7aef\u53e3\u9ad8\u7535\u5e73",
+      "icon":null,
+      "name":"\u7aef\u53e3\u9ad8\u7535\u5e73",
+      "color":[
+        13,
+        18,
+        23,
+        255
+      ],
+      "border_color":[
+        74,
+        84,
+        85,
+        255
+      ],
+      "text_color":[
+        255,
+        255,
+        255,
+        180
+      ],
+      "disabled":false,
+      "selected":false,
+      "visible":true,
+      "width":160,
+      "height":60,
+      "pos":[
+        162.1283562458864,
+        13.510696353823874
+      ],
+      "layout_direction":0,
+      "port_deletion_allowed":false,
+      "subgraph_session":{}
     }
   },
   "connections":[
     {
-      "in":[
-        "0x140c4e2cb80",
-        "Input"
-      ],
       "out":[
-        "0x140c4e2cd00",
+        "0x2c126f3d5a0",
         "P2"
+      ],
+      "in":[
+        "0x2c126f3fc10",
+        "Input"
       ]
     }
   ]

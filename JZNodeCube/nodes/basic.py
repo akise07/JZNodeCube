@@ -69,3 +69,11 @@ class SimpleNode(BaseNode2):
         self.add_output('Output')
         items = ['apples', 'bananas', 'pears', 'mangos', 'oranges']
         self.add_combo_menu('my_list', 'My List', items)
+
+class 端口高电平(BaseNode2):
+    __identifier__ = 'basic'
+    NODE_NAME = '端口高电平'
+    
+    def __init__(self):
+        super(端口高电平, self).__init__()
+        self.add_input('Input')

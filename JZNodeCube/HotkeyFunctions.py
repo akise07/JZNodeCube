@@ -82,4 +82,54 @@ def zoom_out(graph):
     zoom = graph.get_zoom() - 0.2
     graph.set_zoom(zoom)
 
+def copy_nodes(graph):
+    """
+    Copy nodes to the clipboard.
+    """
+    graph.copy_nodes()
 
+
+def cut_nodes(graph):
+    """
+    Cut nodes to the clip board.
+    """
+    graph.cut_nodes()
+
+
+def paste_nodes(graph):
+    """
+    Pastes nodes copied from the clipboard.
+    """
+    # by default the graph will inherite the global style
+    # from the graph when pasting nodes.
+    # to disable this behaviour set `adjust_graph_style` to False.
+    graph.paste_nodes(adjust_graph_style=False)
+
+
+def delete_nodes_and_pipes(graph):
+    """
+    Delete selected nodes and connections.
+    """
+    graph.delete_nodes(graph.selected_nodes())
+    for pipe in graph.selected_pipes():
+        pipe[0].disconnect_from(pipe[1])
+
+def select_all_nodes(graph):
+    """
+    Select all nodes.
+    """
+    graph.select_all()
+
+
+def clear_node_selection(graph):
+    """
+    Clear node selection.
+    """
+    graph.clear_selection()
+
+# Nodes
+def toggle_node_search(graph):
+    """
+    show/hide the node search widget.
+    """
+    graph.toggle_node_search()

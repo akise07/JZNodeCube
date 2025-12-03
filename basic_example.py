@@ -3,7 +3,7 @@
 import signal
 from pathlib import Path
 
-from Qt import QtCore, QtWidgets
+from Qt import QtCore, QtWidgets # type: ignore
 
 # import example nodes from the "nodes" sub-package
 from examples.nodes import basic_nodes, custom_ports_node, group_node, widget_nodes
@@ -105,7 +105,7 @@ def main():
     
     # create group node.
     n_group = graph.create_node('nodes.group.MyGroupNode')
-    graph.expand_group_node(n_group)
+    # graph.expand_group_node(n_group)
 
     # make node connections.
 

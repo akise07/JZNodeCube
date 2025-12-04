@@ -28,45 +28,47 @@ class PropertiesWidget(QtWidgets.QWidget):
             return None
         self.clear_properties()
         layout = self.layout()
+        # 添加标题
+        title = QtWidgets.QLabel("节点属性")
+        title.setStyleSheet("font-weight: bold; font-size: 14px; padding: 5px;")
+        layout.addWidget(title)
+
+        # 添加右侧锁定按钮
+        lock_btn = QtWidgets.QPushButton("Lock")
+        lock_btn.setFixedSize(24*3, 24)
+        lock_btn.setToolTip("锁定侧边栏")
+        def switch_lock():
+            if self.is_locked:
+                self.is_locked = False
+                lock_btn.setText("Lock")
+            else:
+                self.is_locked = True
+                lock_btn.setText("Locked")
+        lock_btn.clicked.connect(lambda: switch_lock())
+
+        # 添加右侧保存按钮
+        save_btn = QtWidgets.QPushButton("保存")
+        save_btn.setFixedSize(24*2, 24)
+        save_btn.setToolTip("保存")
+        save_btn.clicked.connect(lambda: ...)
+
+        # 将按钮放在右上角：先放一个水平布局，把标题和按钮包起来
+        header_layout = QtWidgets.QHBoxLayout()
+        header_layout.addWidget(title)
+        header_layout.addStretch()
+        header_layout.addWidget(lock_btn)
+        header_layout.addWidget(save_btn)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        layout.addLayout(header_layout)
+
+        # 添加分隔线
+        line = QtWidgets.QFrame()
+        line.setFrameShape(QtWidgets.QFrame.HLine)
+        line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        layout.addWidget(line)
+        
         if node.__identifier__ == 'ic':
-            # 添加标题
-            title = QtWidgets.QLabel("节点属性")
-            title.setStyleSheet("font-weight: bold; font-size: 14px; padding: 5px;")
-            layout.addWidget(title)
-
-            # 添加右侧锁定按钮
-            lock_btn = QtWidgets.QPushButton("Lock")
-            lock_btn.setFixedSize(24*3, 24)
-            lock_btn.setToolTip("锁定侧边栏")
-            def switch_lock():
-                if self.is_locked:
-                    self.is_locked = False
-                    lock_btn.setText("Lock")
-                else:
-                    self.is_locked = True
-                    lock_btn.setText("Locked")
-            lock_btn.clicked.connect(lambda: switch_lock())
-
-            # 添加右侧保存按钮
-            save_btn = QtWidgets.QPushButton("保存")
-            save_btn.setFixedSize(24*2, 24)
-            save_btn.setToolTip("保存")
-            save_btn.clicked.connect(lambda: ...)
-
-            # 将按钮放在右上角：先放一个水平布局，把标题和按钮包起来
-            header_layout = QtWidgets.QHBoxLayout()
-            header_layout.addWidget(title)
-            header_layout.addStretch()
-            header_layout.addWidget(lock_btn)
-            header_layout.addWidget(save_btn)
-            header_layout.setContentsMargins(0, 0, 0, 0)
-            layout.addLayout(header_layout)
-
-            # 添加分隔线
-            line = QtWidgets.QFrame()
-            line.setFrameShape(QtWidgets.QFrame.HLine)
-            line.setFrameShadow(QtWidgets.QFrame.Sunken)
-            layout.addWidget(line)
+            
             
             # 添加自定义属性行
             # 第一行：文本 + 勾选框
@@ -133,6 +135,9 @@ class PropertiesWidget(QtWidgets.QWidget):
             # checkbox3.stateChanged.connect(self.on_show_grid_changed)
             # checkbox4.stateChanged.connect(self.on_enable_animation_changed)
             # checkbox5.stateChanged.connect(self.on_debug_mode_changed)
+            
+        # 添加弹性空间
+        layout.addStretch()
         
 class CompileWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):

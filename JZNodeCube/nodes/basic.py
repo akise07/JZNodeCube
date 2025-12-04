@@ -1,7 +1,9 @@
 from NodeGraphQt import  GroupNode, NodeGraph, BaseNode
+from NodeGraphQt.base.graph import PortInputNode
 from NodeGraphQt.qgraphics.node_base import NodeItem
 from NodeGraphQt.base.port import Port
 from NodeGraphQt.constants import NodePropWidgetEnum, PortTypeEnum
+from NodeGraphQt.nodes.port_node import PortInputNode, PortOutputNode
 from enum import Enum
 from NodeGraphQt.errors import (
     PortError,
@@ -77,3 +79,12 @@ class 端口高电平(BaseNode):
     def __init__(self):
         super(端口高电平, self).__init__()
         self.add_input('Input')
+
+class 输出端口(PortOutputNode):
+    __identifier__ = 'basic'
+    NODE_NAME = '输出端口'
+    
+    def __init__(self):
+        super(输出端口, self).__init__()
+        self.add_input('输出端口')
+        # print(self.get_sub_graph())

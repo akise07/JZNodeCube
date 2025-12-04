@@ -35,9 +35,15 @@ def main():
 
     # graph_widget.resize(1100, 800)
     # graph_widget.setWindowTitle("JZNodeCube")
-    graph.register_node(basic.SimpleNode)
-    graph.register_node(ic.JZ8P2615)
-    graph.register_node(basic.端口高电平)
+    graph.register_nodes([
+        basic.SimpleNode,
+        ic.JZ8P2615,
+        basic.端口高电平,
+        basic.输出端口,
+    ])
+    # graph.register_node(basic.SimpleNode)
+    # graph.register_node(ic.JZ8P2615)
+    # graph.register_node(basic.端口高电平)
 
     simple_node = graph.create_node('basic.SimpleNode')
     JZ8P2615_node = graph.create_node('ic.JZ8P2615')

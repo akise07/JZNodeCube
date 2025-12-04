@@ -4,12 +4,12 @@ from NodeGraphQt import NodeGraph
 class PropertiesWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.is_locked = False
         self.setFixedWidth(300)
         self.setup_ui()
         
     def setup_ui(self):
         layout = QtWidgets.QVBoxLayout(self)
-        
         
     def clear_properties(self):
         layout = self.layout()
@@ -24,6 +24,8 @@ class PropertiesWidget(QtWidgets.QWidget):
                         sub_item.widget().deleteLater()
     
     def update_data(self, node):
+        if self.is_locked:
+            return None
         self.clear_properties()
         layout = self.layout()
         if node.__identifier__ == 'ic':
@@ -31,7 +33,28 @@ class PropertiesWidget(QtWidgets.QWidget):
             title = QtWidgets.QLabel("节点属性")
             title.setStyleSheet("font-weight: bold; font-size: 14px; padding: 5px;")
             layout.addWidget(title)
-            
+
+            # 添加右侧锁定按钮
+            lock_btn = QtWidgets.QPushButton("Lock")
+            lock_btn.setFixedSize(24*3, 24)
+            lock_btn.setToolTip("锁定侧边栏")
+            def switch_lock():
+                if self.is_locked:
+                    self.is_locked = False
+                    lock_btn.setText("Lock")
+                else:
+                    self.is_locked = True
+                    lock_btn.setText("Locked")
+            lock_btn.clicked.connect(lambda: switch_lock())
+
+            # 将按钮放在右上角：先放一个水平布局，把标题和按钮包起来
+            header_layout = QtWidgets.QHBoxLayout()
+            header_layout.addWidget(title)
+            header_layout.addStretch()
+            header_layout.addWidget(lock_btn)
+            header_layout.setContentsMargins(0, 0, 0, 0)
+            layout.addLayout(header_layout)
+
             # 添加分隔线
             line = QtWidgets.QFrame()
             line.setFrameShape(QtWidgets.QFrame.HLine)

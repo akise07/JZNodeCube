@@ -1,5 +1,7 @@
 import threading, time
+from NodeGraphQt import NodeGraph, SubGraph
 from Qt import QtCore, QtWidgets # type: ignore
+from NodeGraphQt.nodes.port_node import PortInputNode, PortOutputNode
 
 def show_save_message(graph):
     # 获取主窗口 - 使用更可靠的方式
@@ -53,10 +55,17 @@ def save_session_as(graph):
     if file_path:
         graph.save_session(file_path)
 
-def save_session(graph):
+def save_session(graph: NodeGraph):
     """
     Prompts a file save dialog to serialize a session if required.
     """
+    if isinstance(graph, SubGraph):
+        for node in graph.all_nodes():
+            if isinstance(node, PortInputNode):
+                print(1)
+            if isinstance(node, PortOutputNode):
+                print(2)
+        return
     current = graph.current_session()
     if current:
         graph.save_session(current)

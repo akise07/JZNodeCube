@@ -47,11 +47,18 @@ class PropertiesWidget(QtWidgets.QWidget):
                     lock_btn.setText("Locked")
             lock_btn.clicked.connect(lambda: switch_lock())
 
+            # 添加右侧保存按钮
+            save_btn = QtWidgets.QPushButton("保存")
+            save_btn.setFixedSize(24*2, 24)
+            save_btn.setToolTip("保存")
+            save_btn.clicked.connect(lambda: ...)
+
             # 将按钮放在右上角：先放一个水平布局，把标题和按钮包起来
             header_layout = QtWidgets.QHBoxLayout()
             header_layout.addWidget(title)
             header_layout.addStretch()
             header_layout.addWidget(lock_btn)
+            header_layout.addWidget(save_btn)
             header_layout.setContentsMargins(0, 0, 0, 0)
             layout.addLayout(header_layout)
 

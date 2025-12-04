@@ -59,7 +59,7 @@ class BaseNode2(BaseNode):
         return port
     
 
-class SimpleNode(BaseNode2):
+class SimpleNode(BaseNode):
     __identifier__ = 'basic'
     NODE_NAME = 'SimpleNode'
     
@@ -70,7 +70,7 @@ class SimpleNode(BaseNode2):
         items = ['apples', 'bananas', 'pears', 'mangos', 'oranges']
         self.add_combo_menu('my_list', 'My List', items)
 
-class 端口高电平(BaseNode2):
+class 端口高电平(BaseNode):
     __identifier__ = 'basic'
     NODE_NAME = '端口高电平'
     

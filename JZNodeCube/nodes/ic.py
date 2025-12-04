@@ -10,5 +10,7 @@ class JZ8P2615(GroupNode2):
         super(JZ8P2615, self).__init__()
         self.set_color(50, 8, 25)
         
-        self.add_bothway('P1', 'left')
-        self.add_bothway('P2', 'right')
+        # self.add_bothway('P1', 'left')
+        # self.add_bothway('P2', 'right')
+        self.add_input('Ps1')
+        # self.add_output('P2')

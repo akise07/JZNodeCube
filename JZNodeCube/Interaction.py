@@ -13,7 +13,7 @@ class DoubleClicked():
             self.graph.expand_group_node(node)
             # print(self.graph.sub_graphs)
 
-    def onDoubleClick(self, node):
+    def onDoubleClick(self, node: BaseNode):
         self.create_subgraph(node)
         # subgraph = SubGraph()
         # subgraph.show()

@@ -9,7 +9,7 @@
     "reject_connection_types":"{}"
   },
   "nodes":{
-    "0x148cd3ef0a0":{
+    "0x1687a478e20":{
       "type_":"basic.\u7aef\u53e3\u9ad8\u7535\u5e73",
       "icon":null,
       "name":"\u7aef\u53e3\u9ad8\u7535\u5e73",
@@ -44,7 +44,7 @@
       "port_deletion_allowed":false,
       "subgraph_session":{}
     },
-    "0x148cd3ec400":{
+    "0x1687a341060":{
       "type_":"ic.JZ8P2615",
       "icon":null,
       "name":"JZ8P2615",
@@ -72,8 +72,8 @@
       "width":160,
       "height":60,
       "pos":[
-        -63.438934882183084,
-        65.5746288607546
+        -119.51769851459575,
+        32.217814382195385
       ],
       "layout_direction":0,
       "port_deletion_allowed":true,
@@ -81,7 +81,7 @@
       "input_ports":[
         {
           "name":"Ps1",
-          "multi_connection":true,
+          "multi_connection":false,
           "display_name":true
         }
       ],

@@ -8,6 +8,7 @@ class JZ8P2615(GroupNode2):
 
     def __init__(self):
         super(JZ8P2615, self).__init__()
+        self.set_port_deletion_allowed(True)
         self.set_color(50, 8, 25)
         
         # self.add_bothway('P1', 'left')

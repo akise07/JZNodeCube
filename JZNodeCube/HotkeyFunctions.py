@@ -2,6 +2,7 @@ import threading, time
 from NodeGraphQt import NodeGraph, SubGraph
 from Qt import QtCore, QtWidgets # type: ignore
 from NodeGraphQt.nodes.port_node import PortInputNode, PortOutputNode
+from .nodes import GroupNode2
 
 def show_save_message(graph):
     # 获取主窗口 - 使用更可靠的方式
@@ -60,11 +61,38 @@ def save_session(graph: NodeGraph):
     Prompts a file save dialog to serialize a session if required.
     """
     if isinstance(graph, SubGraph):
+        # 先获取子图名字，通过名字获取节点加引脚
+        # print(graph.objectName())
+        # print(graph._node_factory.nodes)
+        # print(graph._node_factory.names)
+        # print(graph.all_nodes())
+        # print(graph._model.__common_node_props)
+        graph_node: GroupNode2 = graph.node
+        input_ports = []
+        output_ports = []
+        
         for node in graph.all_nodes():
             if isinstance(node, PortInputNode):
-                print(1)
+                input_ports.append({
+                    'name': node.NODE_NAME,
+                    'multi_connection': True,
+                    'display_name': True,
+                    'locked': False
+                })
             if isinstance(node, PortOutputNode):
-                print(2)
+                output_ports.append({
+                    'name': node.NODE_NAME,
+                    'multi_connection': True,
+                    'display_name': True,
+                    'locked': False
+                })
+        port_data = {
+            'input_ports': input_ports,
+            'output_ports': output_ports
+        }
+        print(port_data)
+        graph_node.set_ports(port_data)
+        
         return
     current = graph.current_session()
     if current:

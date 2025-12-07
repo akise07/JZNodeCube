@@ -9,7 +9,7 @@
     "reject_connection_types":"{}"
   },
   "nodes":{
-    "0x1acad94efe0":{
+    "0x148cd3ef0a0":{
       "type_":"basic.\u7aef\u53e3\u9ad8\u7535\u5e73",
       "icon":null,
       "name":"\u7aef\u53e3\u9ad8\u7535\u5e73",
@@ -44,7 +44,7 @@
       "port_deletion_allowed":false,
       "subgraph_session":{}
     },
-    "0x1acad94c400":{
+    "0x148cd3ec400":{
       "type_":"ic.JZ8P2615",
       "icon":null,
       "name":"JZ8P2615",
@@ -67,99 +67,25 @@
         180
       ],
       "disabled":false,
-      "selected":false,
+      "selected":true,
       "visible":true,
       "width":160,
       "height":60,
       "pos":[
-        -130.89588891581005,
-        172.48272202939611
+        -63.438934882183084,
+        65.5746288607546
       ],
       "layout_direction":0,
-      "port_deletion_allowed":false,
-      "subgraph_session":{
-        "graph":{
-          "layout_direction":0,
-          "acyclic":true,
-          "pipe_collision":false,
-          "pipe_slicing":true,
-          "pipe_style":1,
-          "accept_connection_types":"{}",
-          "reject_connection_types":"{}"
-        },
-        "nodes":{
-          "0x223e69e3cd0":{
-            "type_":"nodeGraphQt.nodes.PortInputNode",
-            "icon":null,
-            "name":"Ps1",
-            "color":[
-              13,
-              18,
-              23,
-              255
-            ],
-            "border_color":[
-              74,
-              84,
-              85,
-              255
-            ],
-            "text_color":[
-              255,
-              255,
-              255,
-              180
-            ],
-            "disabled":false,
-            "selected":false,
-            "visible":true,
-            "width":124.90625,
-            "height":60,
-            "pos":[
-              325.0,
-              400.0
-            ],
-            "layout_direction":0,
-            "port_deletion_allowed":false,
-            "subgraph_session":{}
-          },
-          "0x223e69e2770":{
-            "type_":"basic.\u8f93\u51fa\u7aef\u53e3",
-            "icon":null,
-            "name":"\u8f93\u51fa\u7aef\u53e3",
-            "color":[
-              13,
-              18,
-              23,
-              255
-            ],
-            "border_color":[
-              74,
-              84,
-              85,
-              255
-            ],
-            "text_color":[
-              255,
-              255,
-              255,
-              180
-            ],
-            "disabled":false,
-            "selected":false,
-            "visible":true,
-            "width":153.0,
-            "height":60,
-            "pos":[
-              619.9055143703043,
-              401.38594529728414
-            ],
-            "layout_direction":0,
-            "port_deletion_allowed":false,
-            "subgraph_session":{}
-          }
+      "port_deletion_allowed":true,
+      "subgraph_session":{},
+      "input_ports":[
+        {
+          "name":"Ps1",
+          "multi_connection":true,
+          "display_name":true
         }
-      }
+      ],
+      "output_ports":[]
     }
   }
 }

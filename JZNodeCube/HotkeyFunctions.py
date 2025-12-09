@@ -91,8 +91,8 @@ def save_session(graph: NodeGraph):
             'output_ports': output_ports
         }
         # print(port_data)
-        graph_node.set_ports(port_data)
-        graph.fit_to_selection()
+        graph_node.set_ports_no_delete(port_data)
+        # graph.fit_to_selection()
         
         return
     current = graph.current_session()
